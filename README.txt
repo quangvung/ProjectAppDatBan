@@ -1,3 +1,6 @@
+https://www.facebook.com/KaiAkatsuki0 kết bạn face với mình để tiện hợp tác được ko
+
+
 Đề tài môn Công nghệ phần mềm
 Tên đề tài: App đặt bàn
 Nhóm thực hiện: Nhóm 14
