@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Detail_Cardview_2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="412dp"
+            android:layout_height="291dp"
+            android:id="@+id/purlC"
+            tools:ignore="MissingConstraints"
+            android:scaleType="centerCrop"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameC"
+            android:layout_below="@id/purlC"
+            android:fontFamily="@font/open_sans_extra_bold"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:textColor="#420A0A"
+            android:textSize="24sp"
+            tools:ignore="MissingConstraints"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginLeft="18dp"
+            android:alpha="0.5"
+            android:fontFamily="@font/open_sans_regular"
+            android:id="@+id/titleC"
+            android:layout_below="@+id/nameC"
+            android:textSize="15dp"
+            android:textColor="#6A3030"
+            tools:ignore="MissingConstraints"
+            android:paddingBottom="120dp"/>
+
+        <RatingBar
+            android:id="@+id/ratingC"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_below="@+id/titleC"
+            android:max="5"
+            android:numStars="5"
+            android:progressTint="@color/colorAccent"
+            android:rating="4.5"
+            android:stepSize="0.5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/roboto"
+            android:inputType="textVisiblePassword"
+            android:text="Choose a restaurant"
+            android:textSize="14dp"
+            android:layout_below="@+id/ratingC"
+            android:layout_marginTop="16dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_res_layout"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/editText"
+            android:hint="Choose a restaurant">
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/booking_type_layout"
+            android:layout_below="@+id/spinner_res_layout"
+            >
+            <EditText
+                android:id="@+id/booking_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:hint="Booking type"
+                android:inputType="textVisiblePassword"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textSize="14dp"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

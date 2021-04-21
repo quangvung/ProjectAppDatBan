@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "488812379969",
+    "project_id": "bookingapp-9bd28",
+    "storage_bucket": "bookingapp-9bd28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488812379969:android:fdc2d8cde9d7fdc8b1abc0",
+        "android_client_info": {
+          "package_name": "net.smallacademy.fragmentexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488812379969-3hblui687u6l14gs46mn7i1vlq3el6em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4gDsZFg-6jJtlHX8Q5LcRwP-aqXKjRYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488812379969-3hblui687u6l14gs46mn7i1vlq3el6em.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
