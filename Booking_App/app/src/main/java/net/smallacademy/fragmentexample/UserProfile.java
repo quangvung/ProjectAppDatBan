@@ -112,7 +112,7 @@ public class UserProfile extends AppCompatActivity {
                     hashMap.put("country",changeCountry.getText().toString());
                     hashMap.put("avatarurl",user.get("avatarurl"));
                     dbr.child(userid).setValue(hashMap);
-                    Toast.makeText(getApplicationContext(),"Update Sucess",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Update Fail. You must complete all information.",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -127,7 +127,7 @@ public class UserProfile extends AppCompatActivity {
                             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                                 Intent intent = new Intent(Intent.ACTION_PICK);
                                 intent.setType("image/*");
-                                startActivityForResult(Intent.createChooser(intent, "Hãy ch?n hình ?nh"),1);
+                                startActivityForResult(Intent.createChooser(intent, "Please choose an image"),1);
                             }
 
                             @Override
@@ -170,7 +170,7 @@ public class UserProfile extends AppCompatActivity {
     }
     private void uploadtofirebase() {
         final ProgressDialog dialog=new ProgressDialog(this);
-        dialog.setTitle("C?t nh?t thông tin...");
+        dialog.setTitle("Updating...");
         dialog.show();
         StorageReference Imagefolder = FirebaseStorage.getInstance().getReference().child("ImageFolder");
         Random generator = new Random();
@@ -180,7 +180,7 @@ public class UserProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         dialog.dismiss();
-                        Toast.makeText(getApplicationContext(),"C?t nh?t thành công",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Update Success!",Toast.LENGTH_LONG).show();
                         uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
