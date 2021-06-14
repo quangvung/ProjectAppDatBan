@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        android:layout_gravity="center"
+        android:background="#fff"
+        android:layout_marginHorizontal="40dp"
+        app:cardElevation="0dp"
+        android:id="@+id/layout_rate"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:id="@+id/img_rating"
+                android:src="@drawable/restaurant_bg"
+                android:scaleType="centerCrop"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Your rating about this restaurent"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#292929"/>
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingStar"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:progressTint="#FFEB3B"
+                android:progressBackgroundTint="#000"
+                android:isIndicator="false"
+                android:layout_gravity="center_horizontal"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="18dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel"
+                    android:textColor="#333333"
+                    android:textSize="18dp"
+                    android:layout_gravity="left"
+                    android:clickable="true"
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/cancel_rate"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rate now"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:id="@+id/accept_rate"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="40dp"
+                    android:clickable="true"
+                    android:textColor="#1132A9"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_below="@+id/layout_rate"
+        android:layout_height="160dp"/>
+
+</RelativeLayout>

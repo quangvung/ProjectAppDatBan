@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddRestaurantActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:layout_collapseMode="pin"
+                android:background="#fff"
+                app:title=" " >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload"
+                    android:id="@+id/upload_btn"
+                    android:layout_marginRight="20dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:textColor="#656565"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:background="@drawable/cornerbg"
+                    android:layout_gravity="right"
+                    />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F7F6F2"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:src="@drawable/addfoodbg"
+                        android:id="@+id/addrestaurantbg"
+                        android:scaleType="centerCrop"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bgtext_add"
+                                android:hint="Your restaurant name"
+                                android:maxLines="2"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="24dp"
+                                android:paddingVertical="10dp"
+                                android:paddingHorizontal="20dp"
+                                android:id="@+id/name_res"
+                                />
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bgtext_add"
+                                android:hint="Title( Italian cafe - Tabouli,...)"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="18dp"
+                                android:paddingVertical="10dp"
+                                android:paddingHorizontal="20dp"
+                                android:layout_marginTop="8dp"
+                                android:maxLines="2"
+                                android:id="@+id/title_res"
+                                />
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bgtext_add"
+                                android:hint="Restaurant address"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="18dp"
+                                android:id="@+id/location_res"
+                                android:maxLines="2"
+                                android:paddingVertical="10dp"
+                                android:paddingHorizontal="20dp"
+                                android:layout_marginTop="8dp" />
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bgtext_add"
+                                android:hint="Avg cost"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="18dp"
+                                android:id="@+id/avg_cost_res_text"
+                                android:maxLines="2"
+                                android:paddingVertical="10dp"
+                                android:paddingHorizontal="20dp"
+                                android:layout_marginTop="8dp" />
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bgtext_add"
+                                android:hint="Restaurant phone number"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="18dp"
+                                android:id="@+id/phone_num_res"
+                                android:maxLines="2"
+                                android:paddingVertical="10dp"
+                                android:paddingHorizontal="20dp"
+                                android:layout_marginTop="8dp" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="20dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Open time"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textSize="18dp"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:orientation="horizontal">
+                                    <EditText
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bgtext_add"
+                                        android:id="@+id/from_time"
+                                        android:hint="11h30 am"
+                                        android:paddingVertical="10dp"
+                                        android:maxLines="1"
+                                        android:paddingHorizontal="20dp" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="to"
+                                        android:id="@+id/to__"
+                                        android:textStyle="bold"
+                                        android:textSize="20dp"
+                                        android:paddingHorizontal="5dp"
+                                        />
+                                    <EditText
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bgtext_add"
+                                        android:id="@+id/to_time"
+                                        android:hint="11h30 pm"
+                                        android:paddingVertical="10dp"
+                                        android:maxLines="1"
+                                        android:paddingHorizontal="20dp" />
+                                </LinearLayout>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add menu image"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textSize="18dp"/>
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:layout_width="100dp"
+                                    android:layout_height="120dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="10dp"
+                                    app:riv_corner_radius="3dp"
+                                    android:background="@drawable/bgtext_add"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/camera_"
+                                    android:id="@+id/add_menu_img" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/ing_layout"
+                        android:background="#fff"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        android:background="#fff">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="#fff"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Offer"
+                                android:layout_marginBottom="10dp"
+                                android:textStyle="bold"
+                                android:textColor="#616161"
+                                android:textSize="28dp"/>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/add_offer_rec"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+  Add more offer"
+                                android:textSize="25dp"
+                                android:textColor="#616161"
+                                android:layout_gravity="bottom|center"
+                                android:layout_marginBottom="20dp"
+                                android:id="@+id/add_more_offer"
+                                />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

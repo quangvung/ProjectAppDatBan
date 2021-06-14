@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ld_activityScreenTitles">
+        <item>Home</item>
+        <item>Search</item>
+        <item>Cart</item>
+        <item>Personal</item>
+        <item />
+        <item>Log Out</item>
+    </string-array>
+
+    <array name="ld_activityScreenIcons">
+        <item>@drawable/ic_baseline_apps_24</item>
+        <item>@drawable/ic_baseline_search_24</item>
+        <item>@drawable/ic_baseline_shopping_cart_24</item>
+        <item>@drawable/ic_baseline_person_24</item>
+        <item>0</item>
+        <item>@drawable/ic_baseline_login_24</item>
+    </array>
+
+</resources>

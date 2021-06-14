@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="56dp"
+            android:orientation="vertical">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="30dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Popular Restaurants"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginVertical="4dp"
+                    android:textStyle="bold|italic"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/famous_recview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+                <RelativeLayout
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/Served_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_extra_bold"
+                        android:text="Served"
+                        android:textColor="#150101"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/to_your_table_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/Served_Text"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="to your table"
+                        android:textColor="#130101"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/Comehungryleave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Served_Text"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Come hungry, leave"
+                        android:textColor="#130101"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/happy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/to_your_table_Text"
+                        android:layout_toRightOf="@id/Comehungryleave"
+                        android:fontFamily="@font/open_sans_extra_bold"
+                        android:text=" happy"
+                        android:textColor="#170101"
+                        android:textSize="24sp" />
+                </RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
