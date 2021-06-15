@@ -144,12 +144,5 @@
         android:layout_marginBottom="30dp"
         android:id="@+id/regis1"
         android:src="@drawable/ic_add_img" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SKIP"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:id="@+id/skip"/>
 
 </RelativeLayout>

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SecondFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
     RestaurantAdapter restaurantAdapter;
     RecyclerView recview;

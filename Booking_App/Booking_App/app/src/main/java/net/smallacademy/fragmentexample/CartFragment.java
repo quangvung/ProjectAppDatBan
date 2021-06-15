@@ -25,8 +25,9 @@ public class CartFragment extends Fragment {
     RecyclerView recview;
     BookUserDataAdapter bookUserDataAdapter;
     BookAdminDataAdapter bookAdminDataAdapter;
-    int count;
+    ArrayList<Integer> count = new ArrayList<>();
     String name_res;
+    int i = 0;
     private ArrayList<BookAdminDataModel> arr_data= new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,20 +35,22 @@ public class CartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
         recview = view.findViewById(R.id.book_rec);
         recview.setLayoutManager(new LinearLayoutManager(getContext()));
-        if (MainActivity.userData.get("role").equals("Admin")){
+        if (LoginActivity.userData.get("role").equals("Admin")){
             FirebaseDatabase.getInstance().getReference("booking").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     for(DataSnapshot ds : snapshot.getChildren()) {
-                        count = (int) snapshot.child(ds.getKey()).getChildrenCount();
+                        count.add((int) snapshot.child(ds.getKey()).getChildrenCount());
                         FirebaseDatabase.getInstance().getReference("restaurants").child(ds.getKey()).child("name").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                                 name_res = String.valueOf(snapshot.getValue());
-                                arr_data.add(new BookAdminDataModel(name_res,String.valueOf(count),ds.getKey()));
+                                arr_data.add(new BookAdminDataModel(name_res,String.valueOf(count.get(i++)),ds.getKey()));
                                 bookAdminDataAdapter = new BookAdminDataAdapter(arr_data);
                                 recview.setAdapter(bookAdminDataAdapter);
+                                Log.d("count", String.valueOf(count));
                             }
 
                             @Override
@@ -66,7 +69,7 @@ public class CartFragment extends Fragment {
                 }
             });
         }
-        else if (MainActivity.userData.get("role").equals("User")){
+        else if (LoginActivity.userData.get("role").equals("User")){
             FirebaseRecyclerOptions<BookUserDataModel> options =
                     new FirebaseRecyclerOptions.Builder<BookUserDataModel>()
                             .setQuery(FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("booking"), BookUserDataModel.class)
@@ -84,12 +87,12 @@ public class CartFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (MainActivity.userData.get("role").equals("User")) bookUserDataAdapter.startListening();
+        if (LoginActivity.userData.get("role").equals("User")) bookUserDataAdapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (MainActivity.userData.get("role").equals("User")) bookUserDataAdapter.stopListening();
+        if (LoginActivity.userData.get("role").equals("User")) bookUserDataAdapter.stopListening();
     }
 }

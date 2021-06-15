@@ -173,7 +173,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("role").setValue(role);
                             Intent intent
                                     = new Intent(RegistrationActivity.this,
-                                    MainActivity.class);
+                                    LoginActivity.class);
                             startActivity(intent);
                         }
                         else {

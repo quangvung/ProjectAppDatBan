@@ -91,10 +91,14 @@ public class AddRestaurantActivity extends AppCompatActivity {
         arrOffer.add(new AddOfferModel("",camera_icon));
         buildOfferRecyclerView();
 
+        //Them offer khi an add more offer
         add_more_offer.setOnClickListener((View.OnClickListener) v -> {
             arrOffer.add(new AddOfferModel("",camera_icon));
             buildOfferRecyclerView();
         });
+
+
+        //Khi an upload_btn neu chua chon hinh dai dien cho nha hang thi se thong bao, neu khong thi se thuc thi ham upload
         upload_btn.setOnClickListener(v -> {
             if (filepath==null) Toast.makeText(getApplicationContext(),"Pick your restaurant background",Toast.LENGTH_LONG).show();
             else{
@@ -106,6 +110,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         });
 
 
+        //Khi an vao anh chon anh dai dien, se truy cap toi thu vien hinh anh cua Dien thoai
         add_restaurant_bg.setOnClickListener(v -> {
             flagimg_bg =true;
             Dexter.withContext(AddRestaurantActivity.this)
@@ -129,6 +134,8 @@ public class AddRestaurantActivity extends AppCompatActivity {
                         }
                     }).check();
         });
+
+        //Khi an chon anh cho menu cung truy cap vao thu vien hinh anh cua dien thoai
         add_menu_img.setOnClickListener(v -> {
             flagimg_menu =true;
             Dexter.withContext(AddRestaurantActivity.this)
@@ -159,6 +166,8 @@ public class AddRestaurantActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(v -> finish());
     }
+
+    //Ham upload hinh anh len storage sau do tra ve url
     private void uploadtofirebase() {
         ProgressDialog dialog=new ProgressDialog(this);
         dialog.setTitle("Uploading");
@@ -192,6 +201,8 @@ public class AddRestaurantActivity extends AppCompatActivity {
         }
 
     }
+
+    //Ham nhan url va gui tat ca du lieu nha hang len database
     private void StoreLink(String url) {
         ProgressDialog dialog=new ProgressDialog(this);
 
@@ -231,12 +242,16 @@ public class AddRestaurantActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    //Ham cat nhat lai recyclerview
     private void buildOfferRecyclerView() {
 
         Offer_rec.setLayoutManager(new LinearLayoutManager(this));
         addOfferAdapter = new AddOfferAdapter(arrOffer);
         Offer_rec.setAdapter(addOfferAdapter);
     }
+
+    //Ham nhan du lieu hinh anh o dang bitmap
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == -1) {

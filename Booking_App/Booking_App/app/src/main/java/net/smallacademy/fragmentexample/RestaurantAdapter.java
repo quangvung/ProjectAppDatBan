@@ -30,8 +30,8 @@ public class RestaurantAdapter extends FirebaseRecyclerAdapter<Restaurant_model,
         final String postkey=getRef(position).getKey();
         holder.name_.setText(model.getName());
         holder.address_.setText(model.getAddress());
-        if (MainActivity.userData.get("role").equals("User")) holder.more_.setVisibility(View.GONE);
-        else holder.more_.setVisibility(View.VISIBLE);
+        if (LoginActivity.userData.get("role").equals("User")) holder.more_.setVisibility(View.GONE);
+        else if(LoginActivity.userData.get("role").equals("Admin")) holder.more_.setVisibility(View.VISIBLE);
         holder.more_.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
             popupMenu.inflate(R.menu.pop_up_card_admin_menu);

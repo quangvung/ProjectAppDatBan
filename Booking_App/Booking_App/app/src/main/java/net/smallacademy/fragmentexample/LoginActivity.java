@@ -17,13 +17,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText emailTextView, passwordTextView;
     private Button Btn;
 
+    public static Map<String,String> userData;
     private FirebaseAuth mAuth;
-    private TextView regis,skip;
+    private TextView regis;
     private ImageView regis1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         passwordTextView = findViewById(R.id.password);
         Btn = findViewById(R.id.login);
 
-        skip = findViewById(R.id.skip);
         regis = findViewById(R.id.regis);
         regis1 = findViewById(R.id.regis1);
         // Set on Click Listener on Sign-in button
@@ -66,16 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent
                         = new Intent(LoginActivity.this,
                         RegistrationActivity.class);
-                startActivity(intent);
-            }
-        });
-        skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent
-                        = new Intent(LoginActivity.this,
-                        MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -109,31 +105,39 @@ public class LoginActivity extends AppCompatActivity {
         // signin existing user
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
-                        new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(
-                                    @NonNull Task<AuthResult> task)
-                            {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(),
-                                            "Login successful!!",
-                                            Toast.LENGTH_LONG)
-                                            .show();
-                                    // hide the progress bar
-                                    // if sign-in is successful
-                                    // intent to home activity
-                                    Intent intent
-                                            = new Intent(LoginActivity.this,
-                                            MainActivity.class);
-                                    startActivity(intent);
-                                }
-                                else {
-                                    // sign-in failed
-                                    Toast.makeText(getApplicationContext(),
-                                            "Login failed!!",
-                                            Toast.LENGTH_LONG)
-                                            .show();
-                                }
+                        task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Login successful!!",
+                                        Toast.LENGTH_LONG)
+                                        .show();
+                                // hide the progress bar
+                                // if sign-in is successful
+                                // intent to home activity
+                                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                FirebaseDatabase.getInstance().getReference("User").child(userID).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        userData = (Map<String,String>) snapshot.getValue();
+                                        Intent intent
+                                                = new Intent(LoginActivity.this,
+                                                MainActivity.class);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+                            }
+                            else {
+                                // sign-in failed
+                                Toast.makeText(getApplicationContext(),
+                                        "Login failed!!",
+                                        Toast.LENGTH_LONG)
+                                        .show();
                             }
                         });
     }

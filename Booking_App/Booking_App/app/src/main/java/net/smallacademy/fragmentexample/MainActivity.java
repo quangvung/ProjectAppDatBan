@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
@@ -36,6 +37,8 @@ import net.smallacademy.fragmentexample.Drawer.SpaceItem;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Delayed;
 
 public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
     FragmentManager fragmentManager;
@@ -44,13 +47,13 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     Dialog logoutDialog;
     FloatingActionButton fab_add_restaurant;
     BottomNavigationView bottomNavigation;
-    public static String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     private static final int POS_HOME = 0;
     private static final int POS_SEARCH = 1;
     private static final int POS_CART = 2;
     private static final int POS_PERSONAL = 3;
     private static final int POS_LOGOUT = 5;
-    public static Map<String,String> userData;
+
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         getSupportActionBar().setTitle("");
 
-        fab_add_restaurant.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddRestaurantActivity.class)));
+
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
                     loadFragment(new HomeFragment());
                     return true;
                 case R.id.search:
-                    loadFragment(new SecondFragment());
+                    loadFragment(new SearchFragment());
                     return true;
                 case R.id.fav:
                     loadFragment(new FavFragment());
@@ -86,18 +89,14 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             }
             return false;
         });
-        FirebaseDatabase.getInstance().getReference("User").child(userID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userData = (Map<String,String>) snapshot.getValue();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
 
+        if (LoginActivity.userData.get("role").equals("Admin")) fab_add_restaurant.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddRestaurantActivity.class)));
+        else fab_add_restaurant.setOnClickListener(v -> Toast.makeText(getApplicationContext(),
+                "User cant add restaurant",
+                Toast.LENGTH_LONG)
+                .show());
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withToolbarMenuToggle(toolbar)
                 .withSavedState(savedInstanceState)
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         }
         slidingRootNav.closeMenu();
         if(position == POS_SEARCH){
-            loadFragment(new SecondFragment());
+            loadFragment(new SearchFragment());
         }
         if (position == POS_PERSONAL) {
             startActivity(new Intent(MainActivity.this,UserProfile.class));

@@ -31,7 +31,7 @@ public class Adapter_fav extends FirebaseRecyclerAdapter<Restaurant_model,Adapte
         holder.namefav.setText(model.getName());
         holder.address.setText(model.getAddress());
         Glide.with(holder.img_fav.getContext()).load(model.getPurl()).into(holder.img_fav);
-        if (MainActivity.userData.get("role").equals("User")) holder.more_.setVisibility(View.GONE);
+        if (LoginActivity.userData.get("role").equals("User")) holder.more_.setVisibility(View.GONE);
         else holder.more_.setVisibility(View.VISIBLE);
         holder.more_.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
